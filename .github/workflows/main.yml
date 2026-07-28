@@ -9,39 +9,28 @@ jobs:
 
    steps:
    - name: Checkout code
-     uses: actions/checkout@v2
+     uses: actions/checkout@v4
 
    - name: Setup Python
      uses: actions/setup-python@v5
      with:
-       python-version: 3.8
-       
+       python-version: "3.8"
 
    - name: Install Bandit
      run: pip install bandit
 
-   - name: Install Bandit
-     run: pip install bandit
-
-    - name: Run Bandit Scan (Console)
+   - name: Run Bandit Scan (Console)
      run: bandit -r . -ll -ii --exit-zero
 
-    - name: Generate JSON Report
+   - name: Generate JSON Report
      run: bandit -r . -f json -o bandit-report.json --exit-zero
 
-    - name: Upload Artifact
+   - name: Upload Artifact
      uses: actions/upload-artifact@v4
      if: always()
      with:
-     name: bandit-findings
-     path: bandit-report.json
-
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v4
-     if: always()
-     with:
-      name: bandit-findings
-      path: bandit-report.json
+       name: bandit-findings
+       path: bandit-report.json
 
  image_scan:
    name: Build Image and Run Image Scan
