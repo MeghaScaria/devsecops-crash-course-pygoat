@@ -127,7 +127,9 @@ jobs:
     - dependency_scan
     - image_scan
 
-  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  if: >
+   github.event_name == 'push' && 
+   github.ref == 'refs/heads/main'
 
   steps:
 
