@@ -1,0 +1,22 @@
+name: GitHub Runner Experiments
+
+on:
+  workflow_dispatch:
+
+jobs:
+  explore_runner:
+    name: Explore GitHub Runner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Explore GitHub Context
+        run: |
+         echo "Actor: ${{ github.actor }}"
+         echo "Repository: ${{ github.repository }}"
+         echo "Workflow: ${{ github.workflow }}"
+         echo "Event: ${{ github.event_name }}"
+         echo "Ref: ${{ github.ref }}"
+         echo "SHA: ${{ github.sha }}"
+
+      - name: Print Environment Variables
+        run: env | sort
