@@ -1,7 +1,9 @@
 name: GitHub Runner Experiments
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feature/ci-cd-experiments
 
 jobs:
   explore_runner:
@@ -9,34 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Explore Runner
+      - name: Explore GitHub Context
         run: |
-          echo "===== WHO AM I? ====="
-          whoami
+         echo "Actor: ${{ github.actor }}"
+         echo "Repository: ${{ github.repository }}"
+         echo "Workflow: ${{ github.workflow }}"
+         echo "Event: ${{ github.event_name }}"
+         echo "Ref: ${{ github.ref }}"
+         echo "SHA: ${{ github.sha }}"
 
-          echo ""
-          echo "===== CURRENT DIRECTORY ====="
-          pwd
-
-          echo ""
-          echo "===== FILES ====="
-          ls -la
-
-          echo ""
-          echo "===== HOME ====="
-          echo $HOME
-
-          echo ""
-          echo "===== GITHUB WORKSPACE ====="
-          echo $GITHUB_WORKSPACE
-
-          echo ""
-          echo "===== RUNNER TEMP ====="
-          echo $RUNNER_TEMP
-
-          echo ""
-          echo "===== RUNNER TOOL CACHE ====="
-          echo $RUNNER_TOOL_CACHE
+      - name: Print Environment Variables
+        run: env | sort
