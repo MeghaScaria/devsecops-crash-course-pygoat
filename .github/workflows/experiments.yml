@@ -1,9 +1,7 @@
 name: GitHub Runner Experiments
 
 on:
-  push:
-    branches:
-      - feature/ci-cd-experiments
+  workflow_dispatch:
 
 jobs:
   explore_runner:
