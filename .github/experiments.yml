@@ -1,0 +1,42 @@
+name: GitHub Runner Experiments
+
+on:
+  workflow_dispatch:
+
+jobs:
+  explore_runner:
+    name: Explore GitHub Runner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Explore Runner
+        run: |
+          echo "===== WHO AM I? ====="
+          whoami
+
+          echo ""
+          echo "===== CURRENT DIRECTORY ====="
+          pwd
+
+          echo ""
+          echo "===== FILES ====="
+          ls -la
+
+          echo ""
+          echo "===== HOME ====="
+          echo $HOME
+
+          echo ""
+          echo "===== GITHUB WORKSPACE ====="
+          echo $GITHUB_WORKSPACE
+
+          echo ""
+          echo "===== RUNNER TEMP ====="
+          echo $RUNNER_TEMP
+
+          echo ""
+          echo "===== RUNNER TOOL CACHE ====="
+          echo $RUNNER_TOOL_CACHE
