@@ -20,3 +20,6 @@ jobs:
 
       - name: Print Environment Variables
         run: env | sort
+
+      - name: testing
+        run: echo "testing"
